@@ -4,8 +4,8 @@ public class FuncionarioHotel extends Usuario {
     private String cargo;
     private double salario;
 
-    public FuncionarioHotel(String nome, String cpf, String email, String cargo, double salario) {
-        super(nome, cpf, email);  // construtor da superclasse (Usuario)
+    public FuncionarioHotel(String nome, String email, String cpf, String cargo, double salario) {
+        super(nome, email, cpf);  // construtor da superclasse (Usuario)
         this.cargo = cargo;
         this.salario = salario;
     }
