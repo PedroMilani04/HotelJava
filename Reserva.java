@@ -16,7 +16,7 @@ public class Reserva {
             this.valorTotal = q.getValorDiaria();
             q.setDisponibilidade(false);
         }else{
-            throw new IllegalArgumentException("Quarto ocupado");
+            throw new IllegalArgumentException("Quarto ocupado"); //justificativa: não é possível reservar um quarto ocupado
         }
         
     }
