@@ -3,15 +3,15 @@ package POOII.HotelJava;
 import Hotel;
 
 public class Reserva {
-    protected String dataEntrada;
-    protected String dataSaida;
+    protected CheckIn dataEntrada;
+    protected CheckOut dataSaida;
     protected Quarto quarto;
     protected double valorTotal;
 
-    public Reserva(String dataEntrada, String dataSaida, Quarto q){
+    public Reserva(CheckIn dtEntrada, CheckOut dtSaida, Quarto q){
         if(q.getDisponibilidade()){
-            this.dataEntrada = dataEntrada;
-            this.dataSaida = dataSaida;
+            this.dataEntrada = dtEntrada.getData;
+            this.dataSaida = dtSaida.getSaida;
             this.quarto = q;
             this.valorTotal = q.getValorDiaria();
             q.setDisponibilidade(false);
@@ -21,11 +21,11 @@ public class Reserva {
         
     }
 
-    public String getDataEntrada(){
+    public CheckIn getDataEntrada(){
         return this.dataEntrada;
     }
 
-    public String getDataSaida(){
+    public CheckOut getDataSaida(){
         return this.dataSaida;
     }
 
@@ -37,11 +37,11 @@ public class Reserva {
         return this.valorTotal;
     }
 
-    public void setDataEntrada(String dataEntrada){
+    public void setDataEntrada(CheckIn dataEntrada){
         this.dataEntrada = dataEntrada;
     }
 
-    public void setDataSaida(String dataSaida){
+    public void setDataSaida(CheckOut dataSaida){
         this.dataSaida = dataSaida;
     }
 
