@@ -1,4 +1,4 @@
-package Classe7;
+package Hotel;
 
 public class FuncionarioHotel extends Usuario {
     private String cargo;

@@ -1,4 +1,4 @@
-package POOII.BibliotecaJava;
+package Hotel;
 
 public class Usuario {
     protected static int nextID = 1;

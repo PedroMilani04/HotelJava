@@ -1,4 +1,4 @@
-package Classe7;
+package Hotel;
 
 public class Cliente{
     //atributos do cliente/usuário

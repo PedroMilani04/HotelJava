@@ -1,3 +1,5 @@
+package Hotel;
+
 import java.util.ArrayList;
 import Cliente;
 
