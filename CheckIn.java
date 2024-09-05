@@ -11,24 +11,79 @@ package com.mycompany.hotel;
 
     
 public class CheckIn {
-    private Quarto quartos [];
-    private int cont;
+    protected Quarto quartos [];
+    protected int cont;
      
 
-    public int entrada(Cliente hospede, string dataCheckIn){
+    public int entrada(Cliente hospede, String dataCheckIn){
        for(int i=0; (this.quartos[i]!= null)  ;i++){
     if(quartos[i].getDisponibilidade==1){
         quartos[i].setCliente(hospede);
         quartos[i].setDisponibilidade(0);
-        quartos[i].setData(dataCheckIN)
+        quartos[i].setData(dataCheckIn);
     return i;
     }
     
     } 
-      return null; // não há vagas 
+      return 0; // não há vagas 
     
     }
 
+    public int entradaQuartoLuxo(Cliente hospede, String dataCheckIn){
+       for(int i=0; (this.quartos[i]!= null)  ;i++){
+    if((quartos[i].getDisponibilidade==1) && (quartos[i] instanceof QuartoLuxo )){
+        quartos[i].setCliente(hospede);
+        quartos[i].setDisponibilidade(0);
+        quartos[i].setData(dataCheckIn);
+    return i;
+    }
+    
+    } 
+      return 0; // não há vagas 
+    
+    }
+public int entradaQuartoEmpresarial(Cliente hospede, String dataCheckIn){
+       for(int i=0; (this.quartos[i]!= null)  ;i++){
+    if((quartos[i].getDisponibilidade==1) && (quartos[i] instanceof QuartoEmpresarial )){
+        quartos[i].setCliente(hospede);
+        quartos[i].setDisponibilidade(0);
+        quartos[i].setData(dataCheckIn);
+    return i;
+    }
+    
+    } 
+      return 0; // não há vagas 
+    
+    }
+
+public int entradaQuartoFamilia(Cliente hospede, String dataCheckIn){
+       for(int i=0; (this.quartos[i]!= null)  ;i++){
+    if((quartos[i].getDisponibilidade==1) && (quartos[i] instanceof QuartoFamilia )){
+        quartos[i].setCliente(hospede);
+        quartos[i].setDisponibilidade(0);
+        quartos[i].setData(dataCheckIn);
+    return i;
+    }
+    
+    } 
+      return 0; // não há vagas 
+    
+    }
+
+    public int entradaQuartoCasal(Cliente hospede, String dataCheckIn){
+       for(int i=0; (this.quartos[i]!= null)  ;i++){
+    if((quartos[i].getDisponibilidade==1) && (quartos[i] instanceof QuartoCasal )){
+        quartos[i].setCliente(hospede);
+        quartos[i].setDisponibilidade(0);
+        quartos[i].setData(dataCheckIn);
+    return i;
+    }
+    
+    } 
+      return 0; // não há vagas 
+    
+    }
+    
     public CheckIn() {
         cont=0;
     }
