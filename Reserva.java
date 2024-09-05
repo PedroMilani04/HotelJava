@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import Cliente;
 
 public class Reserva {
-    protected static ArrayList<Reserva> reservas = new ArrayList<Reserva>(); //verificar com o professor se isso vai dar certo
+    protected ArrayList<Reserva> reservas = new ArrayList<Reserva>();
     protected Quarto quarto;
     protected String dataEntrada;
     protected double valorTotal;
@@ -23,8 +23,8 @@ public class Reserva {
     }
 
      
-    public static ArrayList<Reserva> getReservas() { // Método para obter todas as reservas (opcional)
-        return reservas;
+    public ArrayList<Reserva> getReservas() { // Método para obter todas as reservas (opcional)
+        return this.reservas;
     }
 
     public String getDataEntrada(){
@@ -45,7 +45,7 @@ public class Reserva {
     }
 
     public void setValorTotal(double valorTotal){
-        this.valorTotal = valorTotal;
+        this.valorTotal = valorTotal; //Caso haja alguma alteração necessaria
     }
 
     
