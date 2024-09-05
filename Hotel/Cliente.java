@@ -2,10 +2,10 @@ package Hotel;
 
 public class Cliente{
     //atributos do cliente/usuário
-    private String nome;
-    private String cpf;
-    private int idade;
-    private int telefone;
+    protected String nome;
+    protected String cpf;
+    protected int idade;
+    protected int telefone;
     
 
     //construtor
