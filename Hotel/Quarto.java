@@ -35,20 +35,24 @@ public class Quarto {
 	case 3: this.tipo= TIPO.presidencial;
 		this.preco=783.72;
 		break;
+	default: System.out.println("Tipo informado não compatível");
 	}
 	}
 	
 	public boolean getDisponibilidade() {
-		return disponibilidade;
+		return this.disponibilidade;
 	}
 	public String getCliente() {
-		return cpfCliente;
+		return this.cpfCliente;
 	}
 	public int getNumeroDoQuarto() {
-		return numeroDoQuarto;
+		return this.numeroDoQuarto;
+	}
+	public int getAndar() {
+		return this.andar;
 	}
 	public double getPreco() {
-		return preco;
+		return this.preco;
 	}
 	public int getTipo() {
 		switch(tipo) {
@@ -56,6 +60,8 @@ public class Quarto {
 		case casal: return 1;
 		case familia: return 2;
 		case presidencial: return 3;
+		default: System.out.println("Quarto com tipo não informado ou inválido");
+			return -1;
 		}
 	}
 	public void setDisponibilidade(boolean disponibilidade) {
@@ -84,8 +90,7 @@ public class Quarto {
 		case 3: this.tipo= TIPO.presidencial;
 			this.preco=783.72;
 			break;
+		default: System.out.println("Tipo informado não disponível");
 		}
 	}
 }
-
-
