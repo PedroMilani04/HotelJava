@@ -1,19 +1,21 @@
-package POOII.HotelJava;
-
 import Hotel;
+
+import Cliente;
 
 public class Reserva {
     protected CheckIn dataEntrada;
     protected CheckOut dataSaida;
     protected Quarto quarto;
     protected double valorTotal;
+    protected Cliente cliente;
 
-    public Reserva(CheckIn dtEntrada, CheckOut dtSaida, Quarto q){
+    public Reserva(CheckIn dtEntrada, CheckOut dtSaida, Quarto q, Cliente c){
         if(q.getDisponibilidade()){
-            this.dataEntrada = dtEntrada.getData;
-            this.dataSaida = dtSaida.getSaida;
+            this.dataEntrada = dtEntrada.getData; //verificar entrada seria dataEntrada.getData
+            this.dataSaida = dtSaida.getSaida; //assim como aq
             this.quarto = q;
             this.valorTotal = q.getValorDiaria();
+            this.cliente = c;
             q.setDisponibilidade(false);
         }else{
             throw new IllegalArgumentException("Quarto ocupado"); //justificativa: não é possível reservar um quarto ocupado
