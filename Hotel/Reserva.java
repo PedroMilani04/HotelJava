@@ -1,7 +1,7 @@
 package Hotel;
 
 import java.util.ArrayList;
-import Cliente;
+import Hotel.Quarto;
 
 public class Reserva {
     protected ArrayList<Reserva> reservas = new ArrayList<Reserva>();
@@ -14,7 +14,7 @@ public class Reserva {
         if(q.getDisponibilidade()){
             this.dataEntrada = dtEntrada;
             this.quarto = q;
-            this.valorTotal = q.getValorDiaria();
+            this.valorTotal = q.getPreco();
             this.cliente = c;
             q.setDisponibilidade(false);
             reservas.add(this); //Adiciona assim que a reserva é feita
