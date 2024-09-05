@@ -35,16 +35,12 @@ public class Reserva {
         return this.quarto;
     }
 
+    public Cliente getCliente(){
+        return this.cliente;
+    }
+
     public double getValorTotal(){
         return this.valorTotal;
-    }
-
-    public void setDataEntrada(CheckIn dataEntrada){
-        this.dataEntrada = dataEntrada;
-    }
-
-    public void setDataSaida(CheckOut dataSaida){
-        this.dataSaida = dataSaida;
     }
 
     public void setValorTotal(double valorTotal){
