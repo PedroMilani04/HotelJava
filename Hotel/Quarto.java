@@ -1,23 +1,23 @@
 package Hotel;
 
 public class Quarto {
-	private boolean disponibilidade;
-	private String cpfCliente;
-	private int numeroDoQuarto;
-	private double preco;
-	private int andar;
-	private enum TIPO{
+	protected boolean disponibilidade;
+	protected String cpfCliente;
+	protected int numeroDoQuarto;
+	protected double preco;
+	protected int andar;
+	protected enum TIPO{
 		empresarial,
 		casal,
 		familia,
 		presidencial;
 	};
-	private TIPO tipo;
+	protected TIPO tipo;
 
 
-	private Quarto () {}
+	public Quarto () {}
 
-	private Quarto (boolean dispo, String cliente, int numero, int andar, int tipo) {
+	public Quarto (boolean dispo, String cliente, int numero, int andar, int tipo) {
 	this.disponibilidade=dispo;
 	this.cpfCliente=cliente;
 	this.numeroDoQuarto=numero;
@@ -38,19 +38,19 @@ public class Quarto {
 	}
 	}
 	
-	private boolean getDisponibilidade() {
+	public boolean getDisponibilidade() {
 		return disponibilidade;
 	}
-	private String getCliente() {
+	public String getCliente() {
 		return cpfCliente;
 	}
-	private int getNumeroDoQuarto() {
+	public int getNumeroDoQuarto() {
 		return numeroDoQuarto;
 	}
-	private double getPreco() {
+	public double getPreco() {
 		return preco;
 	}
-	private int getTipo() {
+	public int getTipo() {
 		switch(tipo) {
 		case empresarial: return 0;
 		case casal: return 1;
@@ -58,19 +58,19 @@ public class Quarto {
 		case presidencial: return 3;
 		}
 	}
-	private void setDisponibilidade(boolean disponibilidade) {
+	public void setDisponibilidade(boolean disponibilidade) {
 		this.disponibilidade=disponibilidade;
 	}
-	private void setCpfCliente(String cliente) {
+	public void setCpfCliente(String cliente) {
 		this.cpfCliente=cliente;
 	}
-	private void setNumero(int numero) {
+	public void setNumero(int numero) {
 		this.numeroDoQuarto=numero;
 	}
-	private void setAndar(int andar) {
+	public void setAndar(int andar) {
 		this.andar=andar;
 	}
-	private void setTipo(int tipo) {
+	public void setTipo(int tipo) {
 		switch(tipo) {
 		case 0: this.tipo= TIPO.empresarial;
 			this.preco=450;
