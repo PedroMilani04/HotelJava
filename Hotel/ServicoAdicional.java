@@ -1,21 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Hotel;
+package Classes;
 
-/**
- *
- * @author Fernando
- */
+//  ServicoAdicional: Classe para gerenciar serviços adicionais de um Cliente
 import java.util.ArrayList;
 
 public class ServicoAdicional {
 
-    private ArrayList<Servico> servicos; //servicos gerenciados
-    private Cliente cliente;            //Cliente que solicitou o servico
-    private double valorTotal;          //valor total de todos os servicos
-    //private Quarto quarto;
+    private ArrayList<Servico> servicos; //  servicos gerenciados
+    private Cliente cliente;    // Cliente que solicitou o servico
+    private double valorTotal;   //  valor total de todos os servicos
 
     public ServicoAdicional() {
     }
@@ -25,39 +17,49 @@ public class ServicoAdicional {
         this.servicos = new ArrayList();
     }
 
-    //  metodo que adiciona um servico
-    public void adicionarServico(Servico servico) {
-        this.servicos.add(servico);
-    }
-
-    // metodo para remover um servico especifico
-    public void removerServico(Servico servico) {
-        servicos.remove(servico);
-    }
-
-    // metodo que remove todos os servicos de um cliente
-    public void removerTodosServicos() {
-        servicos.clear();
-    }
-
     // metodo para exibir todos os servicos adicionais solicitados (no console)
     public void exibirServicos() {
-        System.out.println("\n Segue todos os servicos solicitados por "+this.cliente.getNome()+": \n");
+        System.out.println("\n Segue todos os servicos solicitados por " + this.cliente.getNome() + ": \n");
         for (int i = 0; i < servicos.size(); i++) {
             Servico servico = servicos.get(i);
             servico.exibir();
         }
     }
 
-    // metodo para buscar servico especifico
-    public Servico buscarPorNome(String nome) {
+    // metodo para buscar servico com nome e dia como parametros e retorna o servico em si
+    public Servico buscarPorNomeDia(String nome, int dia) {
         for (int i = 0; i < servicos.size(); i++) {
             Servico servico = servicos.get(i);
-            if (servico.getNome().equals(nome)) {
+            if (servico.getNome().equals(nome) && servico.getDia() == dia) {
                 return servico; // servico encontrado
             }
         }
         return null; // servico nao encontrado
+    }
+
+    //  metodo que adiciona um servico
+    public void adicionarServico(Servico servico) {
+        this.servicos.add(servico);
+    }
+
+    // metodo que remove servico adicional com parametro servico
+    public void removerServico(Servico servico) {
+        servicos.remove(servico);
+    }
+
+    // metodo para remover um servico baseado com o nome e dia
+    public void removerServicoPorNomeDia(String nome, int dia) {
+        for (int i = 0; i < servicos.size(); i++) {
+            Servico servico = servicos.get(i);
+            if (servico.getNome().equals(nome) && servico.getDia() == dia) {
+                servicos.remove(i);
+            }
+        }
+    }
+
+    // metodo que remove todos os servicos de um cliente
+    public void removerTodosServicos() {
+        servicos.clear();
     }
 
     //  metodos getters e setters
@@ -76,13 +78,13 @@ public class ServicoAdicional {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
     //  getValorTotal vai retornar todos os precos dos servicos solicitados somados
     public double getValorTotal() {
         this.valorTotal = 0;
         for (int i = 0; i < servicos.size(); i++) {
             Servico servico = servicos.get(i);
-            this.valorTotal=+servico.getPreco();
+            this.valorTotal += servico.getValor();
         }
         return this.valorTotal;
     }
