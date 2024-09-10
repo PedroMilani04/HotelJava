@@ -20,7 +20,7 @@ private LocalDate dataAtual ;
     
 
 
-public void gerarPagamento(Cliente c, String idPaga){
+public void gerarPagamentoP(Cliente c, String idPaga){
     
     double total=0;
 for(Quarto q: this.quartos){
@@ -42,7 +42,7 @@ for(Quarto q: this.quartos){
         }
     
      }
-     PagamentoReserva paga= new PagamentoReserva(idPaga, total);
+     PagamentoReservaPresencial paga= new PagamentoReserva(idPaga, total);
      pagamentos.add(paga);
   
      //--------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ for(Quarto q: this.quartos){
 }
 public void saida(Cliente c, String idPaga,String metodo,String recep, String unidade){
     
-gerarPagamento(c,idPaga);
+gerarPagamentoP(c,idPaga);
  for(int i = 0; i < pagamentos.size(); i++){
      if(pagamentos.get(i).getIdpagamento == idPaga){
      pagamentos.get(i).pagarReserva( metodo, recep, unidade);
