@@ -26,7 +26,7 @@ public class CheckIn {
         q.setCliente(hospede);
         q.setDisponibilidade(0);
         q.setData(dataCheckIn);
-    return q.getNumero;
+    return q.getNumero; // Retornando o numero do quarto
     }
     
     } 
@@ -41,7 +41,7 @@ public class CheckIn {
         q.setCliente(hospede);
         q.setDisponibilidade(0);
         q.setData(dataCheckIn);
-    return q.getNumero;
+    return q.getNumero; //retornando o numero do quarto
     }
     
     } 
@@ -55,7 +55,7 @@ public class CheckIn {
         q.setCliente(hospede);
         q.setDisponibilidade(0);
         q.setData(dataCheckIn);
-    return q.getNumero;
+    return q.getNumero; //retornando o numero do quarto
     }
     
     } 
@@ -68,7 +68,7 @@ public int entradaQuartoFamilia(Cliente hospede, String dataCheckIn){
         q.setCliente(hospede);
         q.setDisponibilidade(0);
         q.setData(dataCheckIn);
-    return q.getNumero;
+    return q.getNumero; //retornando o numero do quarto
     }
     
     } 
@@ -82,31 +82,31 @@ public int entradaQuartoFamilia(Cliente hospede, String dataCheckIn){
         q.setCliente(hospede);
         q.setDisponibilidade(0);
         q.setData(dataCheckIn);
-    return q.getNumero;
+    return q.getNumero; //retornando o numero do quarto
     }
     
     } 
       return 0; // não há vagas 
     
     }
-    
+    //---------------CONSTRTUTORES-----------------
     public CheckIn() {
         this.quartos = new ArrayList<>();
         
     }
-
+//---------------Função para adicionar mais um quarto
     public CheckIn(ArrayList<Quarto> quartos) {
         this.quartos = quartos;
     }
     
 
-    
+    -
     
     
     public void addQuarto(Quarto quarto){
    quartos.add(quarto);
 }
-
+//--------------------Get e set
     public ArrayList<Quarto> getQuartos() {
         return quartos;
     }
