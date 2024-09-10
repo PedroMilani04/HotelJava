@@ -61,4 +61,52 @@ gerarPagamento(c,idPaga);
      
         
 }
+
+    public CheckOut(ArrayList<PagamentoReserva> pagamentos, ArrayList<ServiçoAdicional> serviços, LocalDate dataAtual, ArrayList<Quarto> quartos) {
+        super(quartos);
+        this.pagamentos = pagamentos;
+        this.serviços = serviços;
+        this.dataAtual = dataAtual;
+    }
+
+    public CheckOut(LocalDate dataAtual) {
+        this.dataAtual = dataAtual;
+         this.quartos = new ArrayList<>();
+         this.pagamentos= new ArrayList<>();
+         this.serviços=new ArrayList<>();
+    }
+
+    public ArrayList<PagamentoReserva> getPagamentos() {
+        return pagamentos;
+    }
+
+    public void setPagamentos(ArrayList<PagamentoReserva> pagamentos) {
+        this.pagamentos = pagamentos;
+    }
+
+    public ArrayList<ServiçoAdicional> getServiços() {
+        return serviços;
+    }
+
+    public void setServiços(ArrayList<ServiçoAdicional> serviços) {
+        this.serviços = serviços;
+    }
+
+    public LocalDate getDataAtual() {
+        return dataAtual;
+    }
+
+    public void setDataAtual(LocalDate dataAtual) {
+        this.dataAtual = dataAtual;
+    }
+
+    public ArrayList<Quarto> getQuartos() {
+        return quartos;
+    }
+
+    public void setQuartos(ArrayList<Quarto> quartos) {
+        this.quartos = quartos;
+    }
+    
+
 }
