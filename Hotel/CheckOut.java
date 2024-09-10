@@ -42,7 +42,7 @@ for(Quarto q: this.quartos){
         }
     
      }
-     PagamentoReservaPresencial paga= new PagamentoReserva(idPaga, total);
+     PagamentoReservaPresencial paga= new PagamentoReservaPresencial(idPaga, total);
      pagamentos.add(paga);
   
      //--------------------------------------------------------------------------------
