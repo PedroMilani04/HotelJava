@@ -25,7 +25,7 @@ public class CheckIn {
     if(q.getDisponibilidade==1){
         q.setCliente(hospede);
         q.setDisponibilidade(0);
-        q.setData(dataCheckIn);
+        q.setData(dataCheckIn); //dataCheckIn nao adicionada...é a vida...
     return q.getNumero; // Retornando o numero do quarto
     }
     
