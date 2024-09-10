@@ -1,74 +1,64 @@
-package Hotel;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.hotel;
+ import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+/**
+ *
+ * @author danie
+ */
+public class CheckOut extends CheckIn{
+ 
+private ArrayList <PagamentoReserva> pagamentos;
+private ArrayList <ServiçoAdicional> serviços;
+private LocalDate dataAtual ;
+    
 
-import Hotel.ServicoAdicional;
 
-public class CheckOut {
-    private Cliente cliente;
-    private Quarto quarto;
-    private PagamentoReserva pagamento;
-    private ServicoAdicional servicosAdicionais;
-
-    public CheckOut(Cliente cliente, Quarto quarto, PagamentoReserva pagamento, ServicoAdicional servicosAdicionais) {
-        this.cliente = cliente;
-        this.quarto = quarto;
-        this.pagamento = pagamento;
-        this.servicosAdicionais = servicosAdicionais;
-    }
-
-    // Calcula o total que o cliente deve pagar (quarto + serviços adicionais)
-    public double calcularTotal() {
-        return quarto.getPreco() + servicosAdicionais.getValorTotal();
-    }
-
-    // Processa o checkout do cliente
-    public void realizarCheckout() {
-        double totalAPagar = calcularTotal();
-
-        System.out.println("Cliente: " + cliente.getNome());
-        System.out.println("CPF: " + cliente.getCpf());
-        System.out.println("Número do Quarto: " + quarto.getNumeroDoQuarto());
-        System.out.println("Valor do Quarto: R$ " + quarto.getPreco());
-        System.out.println("Total Serviços Adicionais: R$ " + servicosAdicionais.getValorTotal());
-        System.out.println("Total a Pagar: R$ " + totalAPagar);
-
-        // Marca o pagamento como "pago" e libera o quarto
-        pagamento.setStatus("pago");
-        System.out.println("Pagamento efetuado. Status: " + pagamento.getStatus());
-
-        quarto.setDisponibilidade(true);
-        System.out.println("Quarto " + quarto.getNumeroDoQuarto() + " liberado.");
-    }
-
-    // Getters e setters
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public Quarto getQuarto() {
-        return quarto;
-    }
-
-    public void setQuarto(Quarto quarto) {
-        this.quarto = quarto;
-    }
-
-    public PagamentoReserva getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(PagamentoReserva pagamento) {
-        this.pagamento = pagamento;
-    }
-
-    public ServicoAdicional getServicosAdicionais() {
-        return servicosAdicionais;
-    }
-
-    public void setServicosAdicionais(ServicoAdicional servicosAdicionais) {
-        this.servicosAdicionais = servicosAdicionais;
-    }
+public void gerarPagamento(Cliente c, String idPaga,String metodo,String recep, String unidade){
+    
+    double total=0;
+for(Quarto q: this.quartos){
+    if(q.getCliente==c){
+        LocalDate checkIn= LocalDate.parse(q.getDataCheckIn, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+       // Period estadia = Period.between(checkIn, dataAtual);
+        long estadia = ChronoUnit.DAYS.between(checkIn, dataAtual);
+        total=q.getPreco()*estadia;
+        q.setDisponibilidade(true);
+        
+    
+    break;
+    }}
+     for(int i = 0; i < serviços.size(); i++){
+        if(serviços.get(i).getCliente==c){
+            total=total + serviços.get(i).getValorTotal;
+            break;
+        }
+    
+     }
+     PagamentoReserva paga= new PagamentoReserva(idPaga, total);
+     pagamentos.add(paga);
+  
+     //--------------------------------------------------------------------------------
+     
+}
+public void saida(Cliente c, String idPaga,String metodo,String recep, String unidade){
+    
+gerarPagamento(c,idPaga);
+ for(int i = 0; i < pagamentos.size(); i++){
+     if(pagamentos.get(i).getIdpagamento == idPaga){
+     pagamentos.get(i).pagarReserva( metodo, recep, unidade);
+     break;
+     }}
+     if(pagamentos.getStatus!= "pago"){
+         System.out.println("Erro no pagamento da estadia");
+     }
+     
+        
+}
 }
