@@ -20,7 +20,7 @@ private LocalDate dataAtual ;
     
 
 
-public void gerarPagamento(Cliente c, String idPaga,String metodo,String recep, String unidade){
+public void gerarPagamento(Cliente c, String idPaga){
     
     double total=0;
 for(Quarto q: this.quartos){
