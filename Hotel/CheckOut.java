@@ -48,6 +48,7 @@ for(Quarto q: this.quartos){
      //--------------------------------------------------------------------------------
      
 }
+ //-----------------Realizar o checkout para deixar o hotel presencialmente
 public void saida(Cliente c, String idPaga,String metodo,String recep, String unidade){
     
 gerarPagamentoP(c,idPaga);
@@ -62,7 +63,7 @@ gerarPagamentoP(c,idPaga);
      
         
 }
-
+//---------------------------------construtores
     public CheckOut(ArrayList<PagamentoReserva> pagamentos, ArrayList<ServiçoAdicional> serviços, LocalDate dataAtual, ArrayList<Quarto> quartos) {
         super(quartos);
         this.pagamentos = pagamentos;
@@ -76,7 +77,7 @@ gerarPagamentoP(c,idPaga);
          this.pagamentos= new ArrayList<>();
          this.serviços=new ArrayList<>();
     }
-
+//---------------------getters e setters
     public ArrayList<PagamentoReserva> getPagamentos() {
         return pagamentos;
     }
