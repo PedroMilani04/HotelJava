@@ -30,6 +30,7 @@ for(Quarto q: this.quartos){
         long estadia = ChronoUnit.DAYS.between(checkIn, dataAtual);
         total=q.getPreco()*estadia;
         q.setDisponibilidade(true);
+        q.setDataCheckIn(null);
         
     
     break;
