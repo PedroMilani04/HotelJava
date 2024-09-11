@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.hotel;
+package Hotel;
+
+import java.util.ArrayList;
 
 /**
  *
@@ -11,19 +13,20 @@ package com.mycompany.hotel;
 
     
 public class CheckIn {
-    protected Quarto quartos [];
-    protected int cont;
+    protected ArrayList <Quarto> quartos;
+    
      
 
     
     
     public int entrada(Cliente hospede, String dataCheckIn){
-       for(int i=0; (this.quartos[i]!= null)  ;i++){
-    if(quartos[i].getDisponibilidade==1){
-        quartos[i].setCliente(hospede);
-        quartos[i].setDisponibilidade(0);
-        quartos[i].setData(dataCheckIn);
-    return i;
+       // for(Departamento d : this.departamentos){
+       for(Quarto q : this.quartos){
+    if(q.getDisponibilidade==1){
+        q.setCliente(hospede);
+        q.setDisponibilidade(0);
+        q.setData(dataCheckIn); //dataCheckIn nao adicionada...é a vida...
+    return q.getNumero; // Retornando o numero do quarto
     }
     
     } 
@@ -31,54 +34,28 @@ public class CheckIn {
     
     }
 
-   /* public int entradaQuartoLuxo(Cliente hospede, String dataCheckIn){
-       for(int i=0; (this.quartos[i]!= null)  ;i++){
-    if((quartos[i].getDisponibilidade==1) && (quartos[i] instanceof QuartoLuxo )){
-        quartos[i].setCliente(hospede);
-        quartos[i].setDisponibilidade(0);
-        quartos[i].setData(dataCheckIn);
-    return i;
-    }
-    
-    } 
-      return 0; // não há vagas 
-    
-    }*/
+
      public int entradaQuarEmpresarial(Cliente hospede, String dataCheckIn){
-       for(int i=0; (this.quartos[i]!= null)  ;i++){
-    if((quartos[i].getDisponibilidade==1) && (quartos[i].getTipo==0)){
-        quartos[i].setCliente(hospede);
-        quartos[i].setDisponibilidade(0);
-        quartos[i].setData(dataCheckIn);
-    return i;
+       for(Quarto q: this.quartos){
+    if((q.getDisponibilidade==1) && (q.getTipo==0)){
+        q.setCliente(hospede);
+        q.setDisponibilidade(0);
+        q.setData(dataCheckIn);
+    return q.getNumero; //retornando o numero do quarto
     }
     
     } 
       return 0; // não há vagas 
     
     }
-    /*
-public int entradaQuartoEmpresarial(Cliente hospede, String dataCheckIn){
-       for(int i=0; (this.quartos[i]!= null)  ;i++){
-    if((quartos[i].getDisponibilidade==1) && (quartos[i] instanceof QuartoEmpresarial )){
-        quartos[i].setCliente(hospede);
-        quartos[i].setDisponibilidade(0);
-        quartos[i].setData(dataCheckIn);
-    return i;
-    }
-    
-    } 
-      return 0; // não há vagas 
-    
-    }
-*/
+  
      public int entradaQuartoCasal(Cliente hospede, String dataCheckIn){
-       for(int i=0; (this.quartos[i]!= null)  ;i++){
-    if((quartos[i].getDisponibilidade==1) && (quartos[i].getTipo==1)){
-        quartos[i].setCliente(hospede);
-        quartos[i].setDisponibilidade(0);
-        quartos[i].setData(dataCheckIn);
-    return i;
+       for(Quarto q: this.quartos){
+    if((q.getDisponibilidade) && (q.getTipo==1)){
+        q.setCliente(hospede);
+        q.setDisponibilidade(0);
+        q.setData(dataCheckIn);
+    return q.getNumero; //retornando o numero do quarto
     }
     
     } 
@@ -86,12 +63,12 @@ public int entradaQuartoEmpresarial(Cliente hospede, String dataCheckIn){
     
     }
 public int entradaQuartoFamilia(Cliente hospede, String dataCheckIn){
-       for(int i=0; (this.quartos[i]!= null)  ;i++){
-    if((quartos[i].getDisponibilidade==1) && (quartos[i].getTipo==2)){
-        quartos[i].setCliente(hospede);
-        quartos[i].setDisponibilidade(0);
-        quartos[i].setData(dataCheckIn);
-    return i;
+       for(Quarto q : this.quartos){
+    if((q.getDisponibilidade==1) && (q.getTipo==2)){
+        q.setCliente(hospede);
+        q.setDisponibilidade(0);
+        q.setData(dataCheckIn);
+    return q.getNumero; //retornando o numero do quarto
     }
     
     } 
@@ -100,58 +77,44 @@ public int entradaQuartoFamilia(Cliente hospede, String dataCheckIn){
     }
 
     public int entradaQuartopresidencial(Cliente hospede, String dataCheckIn){
-       for(int i=0; (this.quartos[i]!= null)  ;i++){
-    if((quartos[i].getDisponibilidade==1) && (quartos[i].getTipo==3)){
-        quartos[i].setCliente(hospede);
-        quartos[i].setDisponibilidade(0);
-        quartos[i].setData(dataCheckIn);
-    return i;
+       for(Quarto q : this.quartos){
+    if((q.getDisponibilidade==1) && (q.getTipo==3)){
+        q.setCliente(hospede);
+        q.setDisponibilidade(0);
+        q.setData(dataCheckIn);
+    return q.getNumero; //retornando o numero do quarto
     }
     
     } 
       return 0; // não há vagas 
     
     }
-    
+    //---------------CONSTRTUTORES-----------------
     public CheckIn() {
-        cont=0;
+        this.quartos = new ArrayList<>();
+        
     }
-
+//---------------Função para adicionar mais um quarto
+    public CheckIn(ArrayList<Quarto> quartos) {
+        this.quartos = quartos;
+    }
     
+
+    -
     
     
     public void addQuarto(Quarto quarto){
-    quartos [cont]=quarto;
-    cont++;
-    quarto.setNumero(cont+1);
+   quartos.add(quarto);
 }
-    public int getCont() {
-        return cont;
-    }
-    
-    
- public Quarto[] getQuartos() {
-        Quarto quartos[] = new Quarto[60];
-        
-        for(int i=0; this.quartos[i]!= null;i++){
-    
-    quartos[i]= this.quartos[i];
-    }
-      
-        
+//--------------------Get e set
+    public ArrayList<Quarto> getQuartos() {
         return quartos;
-    }    
-    
+    }
 
-
-public void setQuartos(Quarto[] quartos) {
+    public void setQuartos(ArrayList<Quarto> quartos) {
         this.quartos = quartos;
-int contagem=0;
- for(int i=0; this.quartos[i]!= null;i++){
-    contagem++;
-    quartos[i].setNumero(contagem);
+    }
+   
     
-    }
- this.cont=contagem;
-    }
+    
 }
