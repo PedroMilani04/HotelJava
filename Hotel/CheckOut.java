@@ -13,45 +13,18 @@ import java.time.temporal.ChronoUnit;
  * @author danie
  */
 public class CheckOut extends CheckIn{
- 
+ private Strategy strategiaNegocio;
 private ArrayList <PagamentoReserva> pagamentos;
 private ArrayList <ServiçoAdicional> serviços;
 private LocalDate dataAtual ;
     
 
 
-public void gerarPagamentoP(Cliente c, String idPaga){
-    
-    double total=0;
-for(Quarto q: this.quartos){
-    if(q.getCliente==c){
-        LocalDate checkIn= LocalDate.parse(q.getDataCheckIn, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-       // Period estadia = Period.between(checkIn, dataAtual);
-        long estadia = ChronoUnit.DAYS.between(checkIn, dataAtual);
-        total=q.getPreco()*estadia;
-        q.setDisponibilidade(true);
-        q.setDataCheckIn(null);
-        
-    
-    break;
-    }}
-     for(int i = 0; i < serviços.size(); i++){
-        if(serviços.get(i).getCliente==c){
-            total=total + serviços.get(i).getValorTotal;
-            break;
-        }
-    
-     }
-     PagamentoReservaPresencial paga= new PagamentoReservaPresencial(idPaga, total);
-     pagamentos.add(paga);
-  
-     //--------------------------------------------------------------------------------
-     
-}
- //-----------------Realizar o checkout para deixar o hotel presencialmente
+
+ //-----------------Realizar o checkout para deixar o hotel
 public void saida(Cliente c, String idPaga,String metodo,String recep, String unidade){
     
-gerarPagamentoP(c,idPaga);
+strategiaNegocio.gerarPagamento(this,c,idPaga);
  for(int i = 0; i < pagamentos.size(); i++){
      if(pagamentos.get(i).getIdpagamento == idPaga){
      pagamentos.get(i).pagarReserva( metodo, recep, unidade);
@@ -110,5 +83,7 @@ gerarPagamentoP(c,idPaga);
         this.quartos = quartos;
     }
     
-
+ public void setStrategiaNegocio(Strategy strategiaNegocio) {
+        this.strategiaNegocio = strategiaNegocio;
+    }
 }
