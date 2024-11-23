@@ -1,0 +1,5 @@
+public class abstract Strategy {
+
+public abstract void gerarpagamento();
+    
+}
