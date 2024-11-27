@@ -1,0 +1,51 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Hotel;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+
+/**
+ *
+ * @author danie
+ */
+public class strategyHosp extends Strategy {
+    
+        public void gerarPagamento(CheckOut out,Cliente c, String idPaga){
+    
+     int d=5;  temQuarto=0;     
+    double total=0;
+for(Quarto q: out.quartos){
+    if(q.getCliente==c){
+        LocalDate checkIn= LocalDate.parse(q.getDataCheckIn, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+       // Period estadia = Period.between(checkIn, dataAtual);
+        long estadia = ChronoUnit.DAYS.between(checkIn, dataAtual);
+        total=q.getPreco()*estadia;
+        q.setDisponibilidade(true);
+        q.setDataCheckIn(null);
+        temQuarto=1;
+    
+    break;
+    }}
+float desconto,custoServico;
+     for(int i = 0; i < out.serviços.size(); i++){
+        if(out.serviços.get(i).getCliente==c){
+            desconto= d/100 * out.serviços.get(i).getValorTotal;
+                    custoServico= out.serviços.get(i).getValorTotal - desconto;
+            total=total + custoServico;
+            break;
+        }
+    
+     }
+     PagamentoReserva paga= new PagamentoReserva(idPaga, total);
+     pagamentos.add(paga);
+  
+     //--------------------------------------------------------------------------------
+     
+}
+    
+    
+}
