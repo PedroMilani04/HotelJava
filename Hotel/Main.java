@@ -1,9 +1,65 @@
 package Hotel;
 
+import java.util.Scanner;
+
 public class Main {
+
+    static Scanner input = new Scanner(System.in);
+    static final String outputMode = "console";
+    static final OutputInterface output = OutputFactory.getTipoOutput(outputMode);
+
+    public static void boasVindas() {
+        final String nomeHotel;
+
+        output.display("Nome do hotel: ");
+        nomeHotel = input.nextLine();
+
+        Controlador controlador = new Controlador(nomeHotel);
+
+        output.display("Bem-vindo ao Sistema de Gerenciamento do Hotel " + controlador.getNomeHotel() + "!\n");
+    }
+
+    public static int menuOperacoes() {
+        int menu;
+
+        output.display("O que deseja fazer?");
+        output.display("1 - Adicionar");
+        output.display("2 - Remover");
+        output.display("3 - Exibir");
+        output.display("0 - Sair do sistema");
+        menu = input.nextInt();
+
+        return menu;
+    }
+
     public static void main(String[] args) {
+        
+        int menu;
 
+        boasVindas();
+        
+        while(menu != 0) {
+            menu = menuOperacoes();
 
+            switch(menu) {
+                case 1:
+                    // Adicionar
+                    break;
+                case 2:
+                    // Remover
+                    break;
+                case 3:
+                    // Exibir
+                    break;
+                case 0:
+                    output.display("Saindo do sistema...");
+                    break;
+                default:
+                    output.display("Opção inválida!");
+                    break;
+            }
+        }
+        
 
         //Testes
         // Criando clientes

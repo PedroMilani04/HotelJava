@@ -2,8 +2,6 @@ package Hotel;
 
 import java.util.ArrayList;
 
-//quem vai fazer essa reserva???
-
 public class Reserva {
     protected ArrayList<Reserva> reservas = new ArrayList<Reserva>();
     protected Quarto quarto;
