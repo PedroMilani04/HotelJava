@@ -19,90 +19,103 @@ public class Main {
     static int tipo;
     static boolean disponibilidade;
     static String id;
+    static Login l;
+    static Usuario logado;
+    static String email, senha;
+        
     
-
-    public static void boasVindas() {
-        final String nomeHotel;
-
-        output.display("Nome do hotel: ");
-        nomeHotel = input.nextLine();
-
-        Controlador controlador = new Controlador(nomeHotel);
-
-        output.display("Bem-vindo ao Sistema de Gerenciamento do Hotel " + controlador.getNomeHotel() + "!\n");
-    }
-
-    public static void menuAdicionar(Controlador controlador) {
-        int menu = -1;
-
-        Cliente cliente = null;
-        Quarto quarto = null;
-        Reserva reserva = null;
-        PagamentoReserva pagamento = null;
-        Servico servico = null;
-        ServicoAdicional servicoAdicional = null;
-
-        switch(menu) {
-            output.display("O que deseja adicionar?");
-            output.display("1 - Cliente");
-            output.display("2 - Quarto");
-            output.display("3 - Reserva");
-            output.display("4 - Pagamento");
-            output.display("5 - Serviço");
-            output.display("6 - Serviço Adicional");
-            output.display("0 - Voltar");
-            menu = input.nextInt();
-
+        public static void boasVindas() {
+            final String nomeHotel;
+    
+            output.display("Nome do hotel: ");
+            nomeHotel = input.nextLine();
+    
+            Controlador controlador = new Controlador(nomeHotel);
+    
+            output.display("Bem-vindo ao Sistema de Gerenciamento do Hotel " + controlador.getNomeHotel() + "!\n");
+        }
+    
+        public static void menuAdicionar(Controlador controlador) {
+            int menu = -1;
+    
+            Cliente cliente = null;
+            Quarto quarto = null;
+            Reserva reserva = null;
+            PagamentoReserva pagamento = null;
+            Servico servico = null;
+            ServicoAdicional servicoAdicional = null;
+    
             switch(menu) {
-                case 1:
-                    output.display("Nome do cliente: ");
-                    nome = input.nextLine();
-                    output.display("CPF do cliente: ");
-                    cpf = input.nextLine();
-                    output.display("Idade do cliente: ");
-                    idade = input.nextInt();
-                    output.display("Telefone do cliente: ");
-                    telefone = input.nextInt();
-
-                    cliente = new Cliente(nome, cpf, idade, telefone);
-
-                    controlador.adicionarCliente(cliente);
-                    break;
-                case 2:
-                    output.display("Número do quarto: ");
-                    numero = input.nextInt();
-
-                    for(Quarto q : controlador.getQuartos()) {
-                        if(controlador.getQuarto(numero).getNumeroDoQuarto() == numero) {
-                            output.display("Quarto já cadastrado! Informe outro número: ");
-                            numero = input.nextInt();
-                        }   
-                    }
-                    
-                    output.display("Nome do cliente: ");
-                    nome = input.nextLine();
-                    disponibilidade = controlador.getQuarto(numero).getDisponibilidade();
-                    output.display("Andar do quarto: ");
-                    andar = input.nextInt();
-
-                    tipo = -1;
-                    while(tipo < 0 || tipo > 3) {
-                        output.display("Tipo do quarto: ");
-                        output.display("0 - Empresarial");
-                        output.display("1 - Casal");
-                        output.display("2 - Família");
-                        output.display("3 - Presidencial");
+                output.display("O que deseja adicionar?");
+                output.display("1 - Cliente");
+                output.display("2 - Quarto");
+                output.display("3 - Reserva");
+                output.display("4 - Pagamento");
+                output.display("5 - Serviço");
+                output.display("6 - Serviço Adicional");
+                output.display("0 - Voltar");
+                menu = input.nextInt();
+    
+                switch(menu) {
+                    case 1:
+                        output.display("Nome do cliente: ");
+                        nome = input.nextLine();
+                        output.display("CPF do cliente: ");
+                        cpf = input.nextLine();
+                        output.display("Idade do cliente: ");
+                        idade = input.nextInt();
+                        output.display("Telefone do cliente: ");
+                        telefone = input.nextInt();
+    
+                        cliente = new Cliente(nome, cpf, idade, telefone);
+    
+                        controlador.adicionarCliente(cliente);
+                        break;
+                    case 2:
+                        output.display("Número do quarto: ");
+                        numero = input.nextInt();
+    
+                        for(Quarto q : controlador.getQuartos()) {
+                            if(controlador.getQuarto(numero).getNumeroDoQuarto() == numero) {
+                                output.display("Quarto já cadastrado! Informe outro número: ");
+                                numero = input.nextInt();
+                            }   
+                        }
+                        
+                        output.display("Nome do cliente: ");
+                        nome = input.nextLine();
+                        disponibilidade = controlador.getQuarto(numero).getDisponibilidade();
+                        output.display("Andar do quarto: ");
+                        andar = input.nextInt();
+    
+                        tipo = -1;
+                        while(tipo < 0 || tipo > 3) {
+                            output.display("Tipo do quarto: ");
+                            output.display("0 - Empresarial");
+                            output.display("1 - Casal");
+                            output.display("2 - Família");
+                            output.display("3 - Presidencial");
+                            tipo = input.nextInt();
+                        }
                         tipo = input.nextInt();
+    
+                        quarto = new Quarto(disponibilidade, nome, numero, andar, tipo);
+    
+                        controlador.adicionarQuarto(quarto);
+                        break;
+                    case 3:
+                        System.out.println("Digite o email do funcionário: ");
+                        email = input.nextLine();
+                        System.out.println("Digite a senha do funcionário: ");
+                        senha = input.nextLine();
+    
+                        logado = l.loginEmail(email, senha);
+    
+                        if(logado instanceof FuncionarioHotel){
+                        adicionarReserva();
+                    } else {
+                        output.display("Você não tem permissão para adicionar reservas!");
                     }
-                    tipo = input.nextInt();
-
-                    quarto = new Quarto(disponibilidade, nome, numero, andar, tipo);
-
-                    controlador.adicionarQuarto(quarto);
-                    break;
-                case 3:
-                    
-                    adicionarReserva();
                     break;
                 case 4:
                     adicionarPagamento();
@@ -250,29 +263,44 @@ public class Main {
             output.display("3 - Reservas");
             output.display("4 - Pagamentos");
             output.display("5 - Serviços");
-            output.display("6 - Serviços Adicionais");
             output.display("0 - Voltar");
             menu = input.nextInt();
 
             switch(menu) {
-                case 1:
-                    
+                case 1: 
+                    output.display("Clientes cadastrados:");
+                    for (Cliente cliente : controlador.getClientes()) {
+                        output.display("Nome: " + cliente.getNome());
+                    }
                     break;
-                case 2:
-                    
+                case 2: 
+                    output.display("Quartos cadastrados:");
+                    for (Quarto quarto : controlador.getQuartos()) {
+                        output.display("Número do Quarto: " + quarto.getNumeroDoQuarto());
+                    }
                     break;
-                case 3:
-                    
+
+                case 3: 
+                    output.display("Reservas cadastradas:");
+                    for (Reserva reserva : controlador.getReservas()) {
+                        output.display("Data de Entrada: " + reserva.getDataEntrada());
+                    }   
                     break;
-                case 4:
-                        
+                case 4: 
+                    output.display("Pagamentos cadastrados:");
+                    for (PagamentoReserva pagamento : controlador.getPagamentos()) {
+                        output.display("ID do Pagamento: " + pagamento.getIdPagamento());
+                    }
                     break;
-                case 5:
-                        
+
+                case 5: 
+                    output.display("Serviços cadastrados:");
+                    for (Servico servico : controlador.getServicos()) {
+                        output.display("Nome do Serviço: " + servico.getNome());
+                    }
                     break;
-                case 6:
-                            
-                    break;
+
+               
                 case 0:
                     output.display("Saindo do sistema...");
                     break;
