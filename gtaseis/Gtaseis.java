@@ -147,24 +147,25 @@ public class Gtaseis {
                         break;
                     }
 
-                    System.out.print("Nome do servico (lavanderia, spa, cafe da manha, etc.): ");
-                    String nomeServico = scanner.nextLine();
-
-                    Servico novoServico;
-                    try {
-                        novoServico = new Servico(nomeServico);
-                    } catch (Exception e) {
-                        System.out.println("Servico invalido!");
-                        break;
-                    }
+                    System.out.print("Digite a categoria de servico (Quarto ou Cliente)");
+                    String servicoCategoria = scanner.nextLine();
 
                     ServicoAdicional servicoAdicional = servicos.stream().filter(s -> s.getCliente().equals(clienteServico)).findFirst().orElse(null);
                     if (servicoAdicional == null) {
                         servicoAdicional = new ServicoAdicional(clienteServico);
                         servicos.add(servicoAdicional);
                     }
-
-                    servicoAdicional.adicionarServico(novoServico);
+                    
+                    System.out.print("Digite o servico (lavanderia, spa, cafe da manha, etc.)");
+                    String tipoServico = scanner.nextLine();
+                    
+                    if(servicoCategoria.equals("Quarto")){
+                        ServicoQuarto novoServicoQuarto = new ServicoQuarto(tipoServico);
+                        servicoAdicional.adicionarServico(novoServicoQuarto);
+                    }else{
+                        ServicoCliente novoServicoCliente = new ServicoCliente(tipoServico, cpfServico);
+                        servicoAdicional.adicionarServico(novoServicoCliente);
+                    }
                     System.out.println("Servico adicionado com sucesso!");
                     break;
 
