@@ -26,7 +26,7 @@ public void saida(Cliente c, String idPaga,String metodo,String recep, String un
     
 strategiaNegocio.gerarPagamento(this,c,idPaga);
  for(int i = 0; i < pagamentos.size(); i++){
-     if(pagamentos.get(i).getIdpagamento == idPaga){
+     if(pagamentos.get(i).getIdpagamento() == idPaga){
      pagamentos.get(i).pagarReserva( metodo, recep, unidade);
      break;
      }}

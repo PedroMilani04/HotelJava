@@ -1,4 +1,4 @@
-package Classes;
+package Hotel;
 
 //  ServicoAdicional: Classe para gerenciar serviços adicionais de um Cliente
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class ServicoAdicional {
 
     public ServicoAdicional(Cliente cliente) {
         this.cliente = cliente;
-        this.servicos = new ArrayList();
+        this.servicos = new ArrayList<>();
     }
 
     // metodo para exibir todos os servicos adicionais solicitados (no console)

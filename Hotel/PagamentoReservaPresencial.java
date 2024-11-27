@@ -14,8 +14,8 @@ public class PagamentoReservaPresencial extends PagamentoReserva{
     private String recepcionista;
     private String unidadeHotel;
     
-    public PagamentoReservaPresencial(String idPagamento, double valor) {
-        super(idPagamento, valor);
+    public PagamentoReservaPresencial(String idPagamento, double valor, Reserva reserva) {
+        super(idPagamento, valor, reserva);
     }
 
     public String getRecepcionista() {

@@ -2,6 +2,10 @@ package Hotel;
 
 public class Main {
     public static void main(String[] args) {
+
+
+
+        //Testes
         // Criando clientes
         Cliente cliente1 = new Cliente("João Silva", "12345678901", 30, 99887766);
         Cliente cliente2 = new Cliente("Maria Oliveira", "98765432101", 25, 99112233);
@@ -19,12 +23,12 @@ public class Main {
         System.out.println("Reserva 2: Quarto " + reserva2.getQuarto().getNumeroDoQuarto() + " para " + reserva2.getCliente().getNome());
 
         // Exemplo de pagamento online
-        PagamentoReserva pagamento1 = new PagamentoReservaOnline("001", reserva1.getValorTotal());
+        PagamentoReserva pagamento1 = new PagamentoReservaOnline("001", reserva1.getValorTotal(), reserva1);
         pagamento1.pagarReserva("Cartão de Crédito", "Desktop", "Chrome");
         System.out.println("Pagamento 1: " + pagamento1.getStatus() + " via " + pagamento1.getMetodoPagamento());
 
         // Exemplo de pagamento presencial
-        PagamentoReserva pagamento2 = new PagamentoReservaPresencial("002", reserva2.getValorTotal());
+        PagamentoReserva pagamento2 = new PagamentoReservaPresencial("002", reserva2.getValorTotal(), reserva2);
         pagamento2.pagarReserva("Dinheiro", "Ana Recepcionista", "Unidade Central");
         System.out.println("Pagamento 2: " + pagamento2.getStatus() + " via " + pagamento2.getMetodoPagamento());
 

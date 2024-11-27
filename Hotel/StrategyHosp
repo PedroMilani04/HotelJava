@@ -40,7 +40,7 @@ float desconto,custoServico;
         }
     
      }
-     PagamentoReserva paga= new PagamentoReserva(idPaga, total);
+     PagamentoReserva paga = new PagamentoReserva(idPaga, total, reserva);
      pagamentos.add(paga);
   
      //--------------------------------------------------------------------------------

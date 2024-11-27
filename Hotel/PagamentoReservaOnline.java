@@ -13,8 +13,8 @@ public class PagamentoReservaOnline extends PagamentoReserva{
     private String dispositivo;
     private String navegador;
     
-    public PagamentoReservaOnline(String idPagamento, double valor) {
-        super(idPagamento, valor);
+    public PagamentoReservaOnline(String idPagamento, double valor, Reserva reserva) {
+        super(idPagamento, valor, reserva);
     }
 
     public String getDispositivo() {

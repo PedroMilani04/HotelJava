@@ -15,13 +15,15 @@ public abstract class PagamentoReserva{
     protected String status;
     protected String metodoPagamento;
     protected LocalDateTime dataPagamento;
+    protected Reserva reserva;
     
-    public PagamentoReserva(String idPagamento, double valor) {
+    public PagamentoReserva(String idPagamento, double valor, Reserva reserva) {
         this.idPagamento = idPagamento;
         status = "pendente";
         if (valor < 0) {
             throw new IllegalArgumentException("O valor do pagamento não pode ser negativo.");
         }
+        this.reserva = reserva;
     }
 
     public String getIdPagamento() {
@@ -62,6 +64,14 @@ public abstract class PagamentoReserva{
 
     public void setDataPagamento(LocalDateTime dataPagamento) {
         this.dataPagamento = dataPagamento;
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Reserva reserva) {
+        this.reserva = reserva;
     }
     
     public abstract void pagarReserva(String metodoPagamento, String info1, String info2);

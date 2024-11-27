@@ -26,7 +26,7 @@ public class CheckIn {
         q.setCliente(hospede);
         q.setDisponibilidade(0);
         q.setData(dataCheckIn); //dataCheckIn nao adicionada...é a vida...
-    return q.getNumero; // Retornando o numero do quarto
+    return q.getNumero(); // Retornando o numero do quarto
     }
     
     } 

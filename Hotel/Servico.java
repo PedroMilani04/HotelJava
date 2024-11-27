@@ -1,4 +1,4 @@
-package Classes;
+package Hotel;
 
 //  Classe Servico que é gerenciada por ServicoAdicional, definindo cada servico individualmente.
 import java.time.LocalDateTime;

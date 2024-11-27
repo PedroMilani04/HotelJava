@@ -27,7 +27,11 @@ public class FuncionarioHotel extends Usuario {
     }
 
     public void exibirInformacoes() {
-        //
+        System.out.println("Nome: " + getNome());
+        System.out.println("Email: " + getEmail());
+        System.out.println("CPF: " + getCpf());
+        System.out.println("Cargo: " + cargo);
+        System.out.println("Salário: " + salario);
     }
 
 }

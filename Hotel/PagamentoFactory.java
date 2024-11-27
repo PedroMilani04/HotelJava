@@ -1,12 +1,12 @@
 package Hotel;
 
 public class PagamentoFactory {
-  public static PagamentoReserva criarPagamento (String tipo, String idPagamento, double valor) {
+  public static PagamentoReserva criarPagamento (String tipo, String idPagamento, double valor, Reserva reserva) {
     switch (tipo.toLowerCase()) {
       case "online":
-        return new PagamentoReservaOnline(idPagamento, valor);
+        return new PagamentoReservaOnline(idPagamento, valor, reserva);
       case "presencial":
-        return new PagamentoReservaPresencial(idPagamento, valor);
+        return new PagamentoReservaPresencial(idPagamento, valor, reserva);
       default:
         throw new IllegalArgumentException("Tipo de pagamento inválido");
     }

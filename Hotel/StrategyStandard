@@ -34,8 +34,14 @@ for(Quarto q: out.quartos){
         }
     
      }
-     PagamentoReserva paga= new PagamentoReserva(idPaga, total);
-     pagamentos.add(paga);
+
+     for(PagamentoReserva pagamento : out.pagamentos) {
+            if(idPaga == pagamento.getIdPagamento()) {
+                PagamentoReserva paga = new PagamentoReserva(idPaga, total, pagamento.getReserva());
+                pagamentos.add(paga);
+            }
+     }
+     
   
      //--------------------------------------------------------------------------------
      
