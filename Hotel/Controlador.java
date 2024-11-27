@@ -157,15 +157,19 @@ public class Controlador {
     public void removerCliente(Cliente cliente) {
         clientes.remove(cliente);
     }
-
+    
     public void removerFuncionario(FuncionarioHotel funcionario) {
         funcionarios.remove(funcionario);
     }
-
+    
     public void removerCheckIn(CheckIn checkIn) {
         checkIns.remove(checkIn);
     }
 
+    public void removerPagamento(PagamentoReserva pagamento) {
+        pagamentos.remove(pagamento);
+    }
+    
     public void removerCheckOut(CheckOut checkOut) {
         checkOuts.remove(checkOut);
     }
@@ -209,6 +213,10 @@ public class Controlador {
     public void removerServicosAdicionais() {
         servicosAdicionais.clear();
     }
+    
+    public void removerPagamentos() {
+        pagamentos.clear();
+    }
 
     public PagamentoReserva pagarReservaOnline(String idPagamento, double valor, Reserva reserva) {
         PagamentoReserva pagamento = PagamentoFactory.criarPagamento("online", idPagamento, valor, reserva);
@@ -221,5 +229,4 @@ public class Controlador {
         pagamentos.add(pagamento);
         return pagamento;
     }
-
 }

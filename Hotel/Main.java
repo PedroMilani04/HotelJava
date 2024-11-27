@@ -8,6 +8,19 @@ public class Main {
     static final String outputMode = "console";
     static final OutputInterface output = OutputFactory.getTipoOutput(outputMode);
 
+    static String nome;
+    static String cpf;
+    static int idade;
+    static int telefone;
+    static boolean dispo;
+    static String cliente;
+    static int numero;
+    static int andar;
+    static int tipo;
+    static boolean disponibilidade;
+    static String id;
+    
+
     public static void boasVindas() {
         final String nomeHotel;
 
@@ -19,17 +32,255 @@ public class Main {
         output.display("Bem-vindo ao Sistema de Gerenciamento do Hotel " + controlador.getNomeHotel() + "!\n");
     }
 
-    public static int menuOperacoes() {
-        int menu;
+    public static void menuAdicionar(Controlador controlador) {
+        int menu = -1;
 
-        output.display("O que deseja fazer?");
-        output.display("1 - Adicionar");
-        output.display("2 - Remover");
-        output.display("3 - Exibir");
-        output.display("0 - Sair do sistema");
-        menu = input.nextInt();
+        Cliente cliente = null;
+        Quarto quarto = null;
+        Reserva reserva = null;
+        PagamentoReserva pagamento = null;
+        Servico servico = null;
+        ServicoAdicional servicoAdicional = null;
 
-        return menu;
+        switch(menu) {
+            output.display("O que deseja adicionar?");
+            output.display("1 - Cliente");
+            output.display("2 - Quarto");
+            output.display("3 - Reserva");
+            output.display("4 - Pagamento");
+            output.display("5 - Serviço");
+            output.display("6 - Serviço Adicional");
+            output.display("0 - Voltar");
+            menu = input.nextInt();
+
+            switch(menu) {
+                case 1:
+                    output.display("Nome do cliente: ");
+                    nome = input.nextLine();
+                    output.display("CPF do cliente: ");
+                    cpf = input.nextLine();
+                    output.display("Idade do cliente: ");
+                    idade = input.nextInt();
+                    output.display("Telefone do cliente: ");
+                    telefone = input.nextInt();
+
+                    cliente = new Cliente(nome, cpf, idade, telefone);
+
+                    controlador.adicionarCliente(cliente);
+                    break;
+                case 2:
+                    output.display("Número do quarto: ");
+                    numero = input.nextInt();
+
+                    for(Quarto q : controlador.getQuartos()) {
+                        if(controlador.getQuarto(numero).getNumeroDoQuarto() == numero) {
+                            output.display("Quarto já cadastrado! Informe outro número: ");
+                            numero = input.nextInt();
+                        }   
+                    }
+                    
+                    output.display("Nome do cliente: ");
+                    nome = input.nextLine();
+                    disponibilidade = controlador.getQuarto(numero).getDisponibilidade();
+                    output.display("Andar do quarto: ");
+                    andar = input.nextInt();
+
+                    tipo = -1;
+                    while(tipo < 0 || tipo > 3) {
+                        output.display("Tipo do quarto: ");
+                        output.display("0 - Empresarial");
+                        output.display("1 - Casal");
+                        output.display("2 - Família");
+                        output.display("3 - Presidencial");
+                        tipo = input.nextInt();
+                    }
+                    tipo = input.nextInt();
+
+                    quarto = new Quarto(disponibilidade, nome, numero, andar, tipo);
+
+                    controlador.adicionarQuarto(quarto);
+                    break;
+                case 3:
+                    
+                    adicionarReserva();
+                    break;
+                case 4:
+                    adicionarPagamento();
+                    break;
+                case 5:
+                    adicionarServico();
+                    break;
+                case 6:
+                    adicionarServicoAdicional();
+                    break;
+                case 0:
+                    output.display("Saindo do sistema...");
+                    break;
+                default:
+                    output.display("Opção inválida!\n");
+                    break;
+            }
+        }
+    }
+
+    public static void menuRemover(Controlador controlador) {
+        int menu = -1;
+        int opcao = -1;
+
+        Cliente cliente = null;
+        Quarto quarto = null;
+        Reserva reserva = null;
+        PagamentoReserva pagamento = null;
+        Servico servico = null;
+        ServicoAdicional servicoAdicional = null;
+
+        while(menu != 0) {
+            output.display("O que deseja remover?");
+            output.display("1 - Cliente");
+            output.display("2 - Quarto");
+            output.display("3 - Reserva");
+            output.display("4 - Pagamento");
+            output.display("5 - Serviço");
+            output.display("6 - Serviço Adicional");
+            output.display("0 - Voltar");
+            menu = input.nextInt();
+
+            switch(menu) {
+                case 1:
+                    while(opcao != 0 && opcao != 1) {
+                        output.display("Deseja remover todos os clientes? (1 - Sim, 0 - Não)");
+                        opcao = input.nextInt();
+
+                        if(opcao == 1) {
+                            controlador.removerClientes();
+                        } else if(opcao == 0) {
+                            output.display("Digite o CPF do cliente que deseja remover: ");
+                            cpf = input.nextLine();
+                            cliente = controlador.getCliente(cpf);
+                            controlador.removerCliente(cliente);
+                        } else {
+                            output.display("Opção inválida!\n");
+                        }
+                    }
+                    break;
+                case 2:
+                    while(opcao != 0 && opcao != 1) {
+                        output.display("Deseja remover todos os quartos? (1 - Sim, 0 - Não)");
+                        opcao = input.nextInt();
+
+                        if(opcao == 1) {
+                            controlador.removerQuartos();
+                        } else if(opcao == 0) {
+                            output.display("Digite o número do quarto que deseja remover: ");
+                            numero = input.nextInt();
+                            quarto = controlador.getQuarto(numero);
+                            controlador.removerQuarto(quarto);
+                        } else {
+                            output.display("Opção inválida!\n");
+                        }
+                    }
+                    break;
+                case 3:
+                    while(opcao != 0 && opcao != 1) {
+                        output.display("Deseja remover todos as reservas? (1 - Sim, 0 - Não)");
+                        opcao = input.nextInt();
+
+                        if(opcao == 1) {
+                            controlador.removerReservas();
+                        } else if(opcao == 0) {
+                            output.display("Digite o número do quarto da reserva que deseja remover: ");
+                            numero = input.nextInt();
+
+                            for(Reserva r : controlador.getReservas()) {
+                                if(numero == r.getQuarto().getNumeroDoQuarto()) {
+                                    reserva = controlador.getReserva(controlador.getReservas(), controlador.getQuarto(numero));
+                                    controlador.removerReserva(reserva);
+                                }
+                            }
+                        } else {
+                            output.display("Opção inválida!\n");
+                        }
+                    }
+                    break;
+                case 4:
+                    while(opcao != 0 && opcao != 1) {
+                        output.display("Deseja remover todos os pagamentos? (1 - Sim, 0 - Não)");
+                        opcao = input.nextInt();
+
+                        if(opcao == 1) {
+                            controlador.removerPagamentos();
+                        } else if(opcao == 0) {
+                            output.display("Digite o número do ID do pagamento da reserva que deseja remover: ");
+                            id = input.nextLine();
+
+                            for(PagamentoReserva p : controlador.getPagamentos()) {
+                                if(id.equals(p.getIdPagamento())) {
+                                    pagamento = p;
+                                    controlador.removerPagamento(pagamento);
+                                }
+                            }
+                        } else {
+                            output.display("Opção inválida!\n");
+                        }
+                    }
+                    break;
+                case 5:
+                    removerServico();
+                    break;
+                case 6:
+                    removerServicoAdicional();
+                    break;
+                case 0:
+                    output.display("Saindo do sistema...");
+                    break;
+                default:
+                    output.display("Opção inválida!\n");
+                    break;
+            }
+        }
+    }
+
+    public static void menuExibir(Controlador controlador) {
+        int menu = -1;
+
+        while(menu != 0) {
+            output.display("O que deseja exibir?");
+            output.display("1 - Clientes");
+            output.display("2 - Quartos");
+            output.display("3 - Reservas");
+            output.display("4 - Pagamentos");
+            output.display("5 - Serviços");
+            output.display("6 - Serviços Adicionais");
+            output.display("0 - Voltar");
+            menu = input.nextInt();
+
+            switch(menu) {
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    
+                    break;
+                case 4:
+                        
+                    break;
+                case 5:
+                        
+                    break;
+                case 6:
+                            
+                    break;
+                case 0:
+                    output.display("Saindo do sistema...");
+                    break;
+                default:
+                    output.display("Opção inválida!\n");
+                    break;
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -39,23 +290,27 @@ public class Main {
         boasVindas();
         
         while(menu != 0) {
-            menu = menuOperacoes();
+            output.display("O que deseja fazer?");
+            output.display("1 - Adicionar");
+            output.display("2 - Remover");
+            output.display("3 - Exibir");
+            output.display("0 - Sair do sistema");
+            menu = input.nextInt();
 
             switch(menu) {
-                case 1:
-                    // Adicionar
+                    menuAdicionar(controlador);
                     break;
                 case 2:
-                    // Remover
+                    menuRemover(controlador);
                     break;
                 case 3:
-                    // Exibir
+                    menuExibir(controlador);
                     break;
                 case 0:
                     output.display("Saindo do sistema...");
                     break;
                 default:
-                    output.display("Opção inválida!");
+                    output.display("Opção inválida!\n");
                     break;
             }
         }
