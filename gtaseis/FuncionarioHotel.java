@@ -1,4 +1,4 @@
-package Hotel;
+package com.mycompany.gtaseis;
 
 public class FuncionarioHotel extends Usuario {
     private String cargo;

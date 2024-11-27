@@ -1,15 +1,15 @@
-package Hotel;
+package com.mycompany.gtaseis;
 
 public class Cliente{
     //atributos do cliente/usuário
     protected String nome;
     protected String cpf;
     protected int idade;
-    protected int telefone;
+    protected String telefone;
     
 
     //construtor
-    public Cliente(String nome, String cpf, int idade, int telefone) {
+    public Cliente(String nome, String cpf, int idade, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
@@ -39,10 +39,10 @@ public class Cliente{
         this.idade = idade;
     }
     //telefone
-    public int getTelefone(){
+    public String getTelefone(){
         return telefone;
     }
-    public void setTelefone(int telefone){
+    public void setTelefone(String telefone){
         this.telefone = telefone;
     }
     

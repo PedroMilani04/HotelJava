@@ -1,7 +1,6 @@
-package Hotel;
+package com.mycompany.gtaseis;
 
 import java.util.ArrayList;
-import Hotel.Quarto;
 
 public class Reserva {
     protected ArrayList<Reserva> reservas = new ArrayList<Reserva>();

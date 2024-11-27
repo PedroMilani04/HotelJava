@@ -1,4 +1,4 @@
-package Classes;
+package com.mycompany.gtaseis;
 
 //  ServicoAdicional: Classe para gerenciar serviços adicionais de um Cliente
 import java.util.ArrayList;
@@ -7,13 +7,20 @@ public class ServicoAdicional {
 
     private ArrayList<Servico> servicos; //  servicos gerenciados
     private Cliente cliente;    // Cliente que solicitou o servico
+    private Quarto quarto;  // Quarto do Cliente que solicitou o servico
     private double valorTotal;   //  valor total de todos os servicos
 
-    public ServicoAdicional() {
+    // Construtor para Cliente com Quarto
+    public ServicoAdicional(Cliente cliente, Quarto quarto) {
+        this.cliente = cliente;
+        this.quarto = quarto;
+        this.servicos = new ArrayList();
     }
 
+    //Construtor para Cliente sem Quarto
     public ServicoAdicional(Cliente cliente) {
         this.cliente = cliente;
+        this.quarto = null;
         this.servicos = new ArrayList();
     }
 
@@ -79,7 +86,19 @@ public class ServicoAdicional {
         this.cliente = cliente;
     }
 
-    //  getValorTotal vai retornar todos os precos dos servicos solicitados somados
+    public Quarto getQuarto() {
+        if (this.quarto != null) {
+            return quarto;
+        } else {
+            throw new IllegalStateException("O Cliente nao possui quarto.");
+        }
+    }
+
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
+    }
+
+    //  getValorTotal retorna valor total de todos os servicos solicitados
     public double getValorTotal() {
         this.valorTotal = 0;
         for (int i = 0; i < servicos.size(); i++) {

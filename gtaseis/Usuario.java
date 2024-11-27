@@ -1,4 +1,4 @@
-package Hotel;
+package com.mycompany.gtaseis;
 
 public class Usuario {
     protected static int nextID = 1;

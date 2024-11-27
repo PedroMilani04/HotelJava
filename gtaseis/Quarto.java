@@ -1,4 +1,5 @@
-package Hotel;
+package com.mycompany.gtaseis;
+import java.time.LocalDateTime;
 
 public class Quarto {
 	protected boolean disponibilidade;
@@ -6,6 +7,7 @@ public class Quarto {
 	protected int numeroDoQuarto;
 	protected double preco;
 	protected int andar;
+        protected LocalDateTime dataHora;
 	protected enum TIPO{
 		empresarial,
 		casal,
@@ -75,6 +77,12 @@ public class Quarto {
 	}
 	public void setAndar(int andar) {
 		this.andar=andar;
+	}
+        public LocalDateTime getDataHora() {
+		return this.dataHora;
+	}
+        public void setDataHora(LocalDateTime dataHora) {
+		this.dataHora=dataHora;
 	}
 	public void setTipo(int tipo) {
 		switch(tipo) {
