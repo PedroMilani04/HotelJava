@@ -9,14 +9,32 @@ import java.util.ArrayList;
  *
  * @author danie
  */
+/**
+ * Classe que implementa a estratégia de pagamento para hospedes.
+ * Esta estratégia calcula o custo total da estadia e dos serviços utilizados
+ * oferecendo um desconto para hospedes nos serviços adicionais no check-out.
+ */
 public class StrategyHosp extends Strategy {
     protected ArrayList <PagamentoReserva> pagamentos;
     
+
+    /**
+     * Método sobrescrito da classe base. Não utilizado diretamente, mas
+     * mantido devido à assinatura abstrata na classe `Strategy`.
+     */
     @Override
     public void gerarPagamento() {
         // Não utilizado, mas mantido devido à assinatura da classe base
     }
 
+/**
+     * Gera o pagamento para o cliente com base no check-out, considerando o custo
+     * da estadia e dos serviços adicionais.
+     * 
+     * @param out o objeto `CheckOut` contendo as informações da reserva e dos serviços
+     * @param c o cliente que está realizando o pagamento
+     * @param idPaga o identificador da transação ou do pagamento
+     */
     public void gerarPagamento(CheckOut out, Cliente c, String idPaga) {
 
         double d = 5.0;
